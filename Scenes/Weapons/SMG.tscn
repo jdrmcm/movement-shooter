@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq2rs1emik2tn"]
+
+[ext_resource type="PackedScene" uid="uid://dw8avnbpxbwpn" path="res://Blasters/Models/GLTF format/blasterC.glb" id="1"]
+[ext_resource type="Script" path="res://Scripts/SMG.gd" id="2_3p2iy"]
+[ext_resource type="AudioStream" uid="uid://cu1xgvcchpgk5" path="res://Sounds/Weapon/gunshot_submachine.mp3" id="3_kdjrx"]
+
+[sub_resource type="Animation" id="Animation_auw63"]
+resource_name = "Fire"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_gunshot"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.11212, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vbmyp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5xc1"]
+_data = {
+"Fire": SubResource("Animation_auw63"),
+"RESET": SubResource("Animation_vbmyp")
+}
+
+[node name="SMG" instance=ExtResource("1")]
+script = ExtResource("2_3p2iy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_u5xc1")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="." index="2"]
+stream = ExtResource("3_kdjrx")
+volume_db = -43.0

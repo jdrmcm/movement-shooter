@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bff3m22tonmu6"
+path="res://.godot/imported/targetA.obj-3650dd332d642fc205dd50ede79b0a68.mesh"
+
+[deps]
+
+files=["res://.godot/imported/targetA.obj-3650dd332d642fc205dd50ede79b0a68.mesh"]
+
+source_file="res://Blasters/Models/OBJ format/targetA.obj"
+dest_files=["res://.godot/imported/targetA.obj-3650dd332d642fc205dd50ede79b0a68.mesh", "res://.godot/imported/targetA.obj-3650dd332d642fc205dd50ede79b0a68.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

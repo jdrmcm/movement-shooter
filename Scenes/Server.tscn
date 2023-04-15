@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=3 uid="uid://dod2o5yjp4pn"]
+
+[ext_resource type="Script" path="res://Scripts/server.gd" id="1_c20rr"]
+[ext_resource type="Script" path="res://Scripts/MapManager.gd" id="2_lmue1"]
+
+[node name="Server" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c20rr")
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.166667
+anchor_top = 0.36875
+anchor_right = 0.325
+anchor_bottom = 0.63125
+offset_left = 13.0
+offset_top = 26.5
+offset_right = -13.0
+offset_bottom = -26.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="UPNP" type="CheckButton" parent="Menu"]
+offset_right = 126.0
+offset_bottom = 31.0
+text = "UPNP"
+
+[node name="Host" type="Button" parent="Menu"]
+offset_top = 35.0
+offset_right = 126.0
+offset_bottom = 66.0
+text = "Host"
+
+[node name="Address" type="LineEdit" parent="Menu"]
+offset_top = 70.0
+offset_right = 126.0
+offset_bottom = 101.0
+text = "127.0.0.1"
+placeholder_text = "Address"
+
+[node name="Join" type="Button" parent="Menu"]
+offset_top = 105.0
+offset_right = 126.0
+offset_bottom = 136.0
+text = "Join"
+
+[node name="MapSelection" type="OptionButton" parent="Menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 362.0
+offset_top = -19.0
+offset_right = 507.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "space_map_3"
+popup/item_0/id = 0
+popup/item_1/text = "test_map"
+popup/item_1/id = 1
+
+[node name="NetworkInfo" type="VBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="NetworkSideDisplay" type="Label" parent="NetworkInfo"]
+offset_right = 156.0
+offset_bottom = 26.0
+text = "NetworkSideDisplay"
+horizontal_alignment = 1
+
+[node name="UniquePeerID" type="Label" parent="NetworkInfo"]
+offset_top = 30.0
+offset_right = 156.0
+offset_bottom = 56.0
+text = "UniquePeerID"
+horizontal_alignment = 1
+
+[node name="MapManager" type="Node" parent="."]
+script = ExtResource("2_lmue1")
+
+[connection signal="toggled" from="Menu/UPNP" to="." method="_on_upnp_toggled"]
+[connection signal="pressed" from="Menu/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Menu/Join" to="." method="_on_join_pressed"]
+[connection signal="item_selected" from="Menu/MapSelection" to="MapManager" method="_on_map_selection_item_selected"]

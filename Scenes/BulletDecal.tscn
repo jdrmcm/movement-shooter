@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb10mcjcdt343"]
+
+[ext_resource type="Script" path="res://Scripts/BulletDecal.gd" id="1_j5lol"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_1emne"]
+size = Vector2(0.02, 0.02)
+
+[node name="BulletDecal" type="Node3D"]
+script = ExtResource("1_j5lol")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.02)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_1emne")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

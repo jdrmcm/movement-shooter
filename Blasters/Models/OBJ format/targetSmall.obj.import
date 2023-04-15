@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://chwnsjkj40w5s"
+path="res://.godot/imported/targetSmall.obj-6feba09db179ac6ef653506cdf49299a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/targetSmall.obj-6feba09db179ac6ef653506cdf49299a.mesh"]
+
+source_file="res://Blasters/Models/OBJ format/targetSmall.obj"
+dest_files=["res://.godot/imported/targetSmall.obj-6feba09db179ac6ef653506cdf49299a.mesh", "res://.godot/imported/targetSmall.obj-6feba09db179ac6ef653506cdf49299a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

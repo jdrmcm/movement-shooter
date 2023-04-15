@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkwf408b3evdg"]
+
+[ext_resource type="AudioStream" uid="uid://cu1xgvcchpgk5" path="res://Sounds/Weapon/gunshot_submachine.mp3" id="1_b57fv"]
+
+[sub_resource type="Animation" id="Animation_hid44"]
+resource_name = "Fire"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5jhs2"]
+_data = {
+"Fire": SubResource("Animation_hid44")
+}
+
+[node name="Unarmed" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5jhs2")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_b57fv")

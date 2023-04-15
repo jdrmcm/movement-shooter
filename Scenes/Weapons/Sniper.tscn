@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmvy8cm0egm1r"]
+
+[ext_resource type="PackedScene" uid="uid://dyc14ojq6f8j3" path="res://Blasters/Models/GLTF format/blasterE.glb" id="1_nhodh"]
+[ext_resource type="Script" path="res://Scripts/Sniper.gd" id="2_5sqy2"]
+[ext_resource type="AudioStream" uid="uid://whp0bgcuqx6s" path="res://Sounds/Weapon/sniper_shoot.ogg" id="3_2isaj"]
+
+[sub_resource type="Animation" id="Animation_x7pf2"]
+resource_name = "Fire"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.260054, 0, 0), Vector3(-0.101229, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_gunshot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_opj4n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tflut"]
+_data = {
+"Fire": SubResource("Animation_x7pf2"),
+"RESET": SubResource("Animation_opj4n")
+}
+
+[node name="Sniper" instance=ExtResource("1_nhodh")]
+script = ExtResource("2_5sqy2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_tflut")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="." index="2"]
+stream = ExtResource("3_2isaj")
+volume_db = -41.0

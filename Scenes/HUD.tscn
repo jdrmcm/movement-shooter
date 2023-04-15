@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfy1d5g8abbal"]
+
+[ext_resource type="Texture2D" uid="uid://c4y3yuhxc4umd" path="res://Textures/sniper scope.png" id="3_ed5vi"]
+[ext_resource type="Texture2D" uid="uid://bkj1w1dr301qu" path="res://Textures/hitmarker.png" id="3_tdtfu"]
+
+[sub_resource type="Animation" id="Animation_ac1s6"]
+resource_name = "Hitmarker"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitmarker:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_gskrn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitmarker:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y4cef"]
+_data = {
+"Hitmarker": SubResource("Animation_ac1s6"),
+"RESET": SubResource("Animation_gskrn")
+}
+
+[node name="HUD" type="Node"]
+
+[node name="Hitmarker" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_tdtfu")
+
+[node name="HitmarkerAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y4cef")
+}
+
+[node name="SniperScope" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ed5vi")
